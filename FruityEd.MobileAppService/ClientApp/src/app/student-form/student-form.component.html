@@ -1,0 +1,229 @@
+
+<div class="container ">
+  <div class="row">
+
+  </div>
+</div>
+
+<div class="jumbotron  " style="background:#1A1A1A; color:#fff">
+  <div class="row">
+
+    <div class="col-md-24 ">
+      <h1 class="type-h1">Add New Student </h1>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="container ">
+  <div class="row">
+
+
+    <div class="col-md-24 ">
+
+
+      <form #f="ngForm" (ngSubmit)="submitStudent()" novalidate id="add-student-form" action="">
+
+     
+
+        <div class="col-md-18 ">
+          <div class="row">
+            <p class="type-p1">Student  </p>
+          </div>
+          <div class="col-md-9 ">
+
+            <div class="row">
+              <div class="putbox">
+                <div class="putbox-icon">
+                  <span class="glyph glyph-calendar-day"></span>
+                </div>
+                <div class="putbox-content">
+                  <div class="content-title">Date of Birth:</div>
+
+
+
+             
+                  <mat-form-field>
+                    <input id="pupilDateOfBirth" name="pupilDateOfBirth" [(ngModel)]="student.pupil.dateOfBirth" matInput [matDatepicker]="picker" placeholder="Choose date for event">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="putbox">
+                <div class="putbox-icon">
+                  <span class="glyph glyph-people"></span>
+                </div>
+                <div class="putbox-content">
+                  <div class="content-title">Name:</div>
+
+                  <input name="pupilFirstName" id="pupilFirstName" [(ngModel)]="student.pupil.firstName"  type="text" class="form-control" placeholder="First Name" />
+
+                  <input name="pupilLastName" id="pupilLastName" [(ngModel)]="student.pupil.lastName"  type="text" class="form-control" placeholder="Other Name(s)" />
+
+                 
+
+
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="col-md-9 ">
+
+            <div class="row">
+
+              <div class="putbox">
+                <div class="putbox-icon">
+                  <span class="glyph glyph-comment"></span>
+                </div>
+                <div class="putbox-content">
+                  <div class="content-title">Other Details:</div>
+
+                  <input id="admissionNo" name="pupilAdmissionNo" [(ngModel)]="student.pupil.admissionNo"  type="text" class="form-control" placeholder="BSL/34/56" />
+
+
+
+                  <input id="favoriteColor" name="favoriteColor" [(ngModel)]="student.pupil.favoriteColor" type="text" class="form-control" placeholder="Favourite Color" />
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <p>Is the student active?</p>
+              <br />
+              <label class="radio-inline">
+                <input type="radio" name="Active" id="Active" value="true" [(ngModel)]="student.isActive">
+                <span>Yes</span>
+              </label>
+
+
+
+              <label class="radio-inline" for="notActive">
+                <input type="radio" name="Active" id="notActive" value="false" [(ngModel)]="student.isActive">
+                <span>No</span>
+              </label>
+
+              <div class="row">
+
+                <div class="form-group">
+                  <h5>Guardians</h5>
+                  <div class="checkbox" *ngFor="let g of guardians">
+                    <label for="guardian{{ g.id }}">
+                      <input type="checkbox" [checked]="student.guardians.includes(g.id)" id="guardian{{ g.id }}" (change)="onGuardianToggle(g.id, $event)"  >
+                      <span>{{ g.firstName  }} {{ g.otherName }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <div class="col-md-6 ">
+          <div class="row">
+       
+          </div>
+          <div class="row">
+
+            <div class="form-group">
+              <h5>School Location</h5>
+              <div class="checkbox"  *ngFor="let l of locations">
+                <label for="location{{ l.id }}">
+                  <input type="checkbox" (change)="onLocationToggle(l.id, $event)" id="location{{ l.id }}" [checked]="student.locations.includes(l.id)">
+                  <span>{{ l.name }}</span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="curriculum">Select Curriculum:</label>
+              <select required #curriculum="ngModel" id="curriculum" name="curriculumId" (change)="onCurriculumChange()" [(ngModel)]="student.curriculumId" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let c of curriculums " value="{{ c.id }}"> {{ c.name}} </option>
+
+              </select>
+
+              <div class="alert alert-danger" *ngIf="curriculum.touched && !curriculum.valid">Kindly specify the Curriculum .</div>
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="curriculumClasses">Class :</label>
+              <select required #curriculumClass="ngModel" name="curriculumClassId" [(ngModel)]="student.curriculumClassId" id="curriculumClass" class="form-control">
+                <option value="">Class is blank :(-</option>
+                <option *ngFor="let c of curriculumClasses" value="{{ c.id }}"> {{ c.name}} </option>
+
+              </select>
+            
+                <div class="alert alert-danger" *ngIf="curriculumClass.touched && !curriculumClass.valid">Kindly specify the Class .</div>
+              
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          <div class="row">
+            <button class="btn btn-primary">Save</button>
+          </div>
+
+
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron  " style="background:#1A1A1A; color:#fff">
+  <div class="row">
+
+    <p class="">{{ student | json }}</p>
+
+  </div>
+</div>
+
+

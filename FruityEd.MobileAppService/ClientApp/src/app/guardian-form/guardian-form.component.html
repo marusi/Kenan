@@ -1,0 +1,147 @@
+
+<div class="container ">
+  <div class="row">
+
+  </div>
+</div>
+
+<div class="jumbotron  " style="background:#1A1A1A; color:#fff">
+  <div class="row">
+
+    <div class="col-md-24 ">
+      <h1 class="type-h1">Add New Guardian </h1>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="container ">
+  <div class="row">
+
+
+    <div class="col-md-24 ">
+
+
+      <form #f="ngForm" (ngSubmit)="submitGuardian()" novalidate id="add-guardian-form" action="">
+
+     
+
+        <div class="col-md-18 ">
+          <div class="row">
+            <p class="type-p1">Guardian  </p>
+          </div>
+          <div class="col-md-9 ">
+
+            <div class="row">
+             
+
+            </div>
+
+            <div class="row">
+
+              <div class="putbox">
+                <div class="putbox-icon">
+                  <span class="glyph glyph-people"></span>
+                </div>
+                <div class="putbox-content">
+                  <div class="content-title">Name:</div>
+
+                  <input name="firstName" id="firstName" [(ngModel)]="guardian.firstName"  type="text" class="form-control" placeholder="First Name" />
+
+                  <input name="otherName" id="otherName" [(ngModel)]="guardian.otherName"  type="text" class="form-control" placeholder="Other Name(s)" />
+
+                 
+
+
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="col-md-9 ">
+
+            <div class="row">
+
+              <div class="putbox">
+                <div class="putbox-icon">
+                  <span class="glyph glyph-contact"></span>
+                </div>
+                <div class="putbox-content">
+                  <div class="content-title">Other Details:</div>
+
+                  <input id="contactEmail" name="contactEmail" [(ngModel)]="guardian.contact.email" type="email" class="form-control" placeholder="me@company.com" />
+
+
+
+                  <input id="contactPhone" name="contactPhone" [(ngModel)]="guardian.contact.phone" type="number" class="form-control" placeholder="07xxxx-xxx-x" />
+
+                  <input id="contactAddress" name="contactAddress" [(ngModel)]="guardian.contact.address" type="text" class="form-control" placeholder="Osupuko XXXXXXX" />
+
+                </div>
+              </div>
+
+            </div>
+
+         
+
+
+          </div>
+
+        </div>
+
+
+        <div class="col-md-6 ">
+          <div class="row">
+       
+          </div>
+          <div class="row">
+
+       
+          </div>
+
+          <div class="row">
+         
+
+          </div>
+          <div class="row">
+ 
+
+
+
+            </div>
+
+
+
+          <div class="row">
+            <button class="btn btn-primary">Save</button>
+          </div>
+
+
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron  " style="background:#1A1A1A; color:#fff">
+  <div class="row">
+
+    <p class="">{{ guardian | json }}</p>
+
+  </div>
+</div>
+
+
